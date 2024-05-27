@@ -22,12 +22,12 @@ const RootLayout = () => {
     if (error) throw error;
     if (fontsLoaded) SplashScreen.hideAsync;
 
-    if (!fontsLoaded && !error) return null;
+    if (!fontsLoaded && !error) return () => [];
   }, [fontsLoaded, error]);
 
   return (
     <Stack>
-      <Stack.Screen name="index" options={{ headerShown: true }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
     </Stack>
   );
 };
