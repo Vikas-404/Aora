@@ -13,7 +13,7 @@ export default function App() {
         {/* Added scrollview as it would be easier to scroll for smaller devices user as the content may get out of their screen and height 100% allows us to make the whole screen scrollable*/}
 
         {/* Logo and Card Image */}
-        <View className="w-full justify-center items-center min-h- px-4">
+        <View className="w-full justify-center items-center min-h-[85vh] px-4">
           <Image
             source={images.logo}
             className="w-[130px] h-[84px}"
