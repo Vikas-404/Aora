@@ -20,6 +20,7 @@ const SignIn = () => {
           <Text className="text-white text-2xl text-semibold mt-10 font-psemibold">Log in to Aora</Text>
           <FormField 
             title="Email"
+            // placeholder="Hello"
             value={form.email}
             handleChangeText={(e) => setForm({...form, email: e})}
             otherStyles="mt-7"
