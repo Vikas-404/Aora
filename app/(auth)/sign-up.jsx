@@ -7,6 +7,7 @@ import { useState } from "react";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 import { createUser } from "../../lib/appwrite";
+import { setStatusBarNetworkActivityIndicatorVisible } from "expo-status-bar";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -18,28 +19,20 @@ const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submit = async () => {
-    if (!form.username || !form.email || !form.password) {
+    if (form.username === "" || form.email === "" || form.password === "") {
       Alert.alert("Error", "Please fill in all the fields");
     }
 
     setIsSubmitting(true);
-
     try {
-      const result = await createUser(
-        form.email,
-        form.username,
-        form.password
-      );
-
-      // set it to global state
-      router.replace("/home");
+      const result = await createUser(form.email, form.password, form.username);
+      setUser(result);
+      setIsLoggedIn(true);
     } catch (error) {
       Alert.alert("Error", error.message);
     } finally {
       setIsSubmitting(false);
     }
-
-    createUser();
   };
 
   return (
